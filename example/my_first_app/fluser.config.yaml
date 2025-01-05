@@ -1,0 +1,12 @@
+server:
+  port: 8080
+  host: localhost
+  
+ssr:
+  enabled: true
+  cache: true
+  timeout: 5000
+
+seo:
+  sitemap: true
+  robots: true

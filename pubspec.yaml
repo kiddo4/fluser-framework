@@ -1,0 +1,30 @@
+name: fluser
+description: A Flutter framework for web with SSR, CSR and SEO support
+version: 0.0.1
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shelf: ^1.4.1
+  shelf_router: ^1.1.4
+  html: ^0.15.4
+  meta: ^1.9.1
+  json_serializable: ^6.7.1
+  path: ^1.8.3
+  yaml: ^3.1.2
+  http: ^1.1.0
+  logging: ^1.2.0
+  stream_channel: ^2.1.2
+  crypto: ^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.6
+  test: ^1.24.9
+  lints: ^2.1.1
+
+flutter:
+  uses-material-design: true
