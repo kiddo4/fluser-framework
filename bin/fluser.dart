@@ -63,11 +63,45 @@ Future<void> serveProject(ArgResults args) async {
 }
 
 Future<void> buildProject(ArgResults args) async {
-  print('Building project...');
-  // Implementation for building project
+  final projectName = args.command!.rest.first;
+  print('Building project: $projectName');
+
+  // Run the Flutter build command
+  final result =
+      await Process.run('flutter', ['build'], workingDirectory: projectName);
+
+  if (result.exitCode == 0) {
+    print('Project built successfully!');
+  } else {
+    print('Build failed: ${result.stderr}');
+  }
 }
 
 Future<void> generateComponent(ArgResults args) async {
-  print('Generating component...');
-  // Implementation for generating components
+  final projectName = args.command!.rest.first;
+  final componentName =
+      args.command!.rest.length > 1 ? args.command!.rest[1] : 'NewComponent';
+
+  print('Generating component: $componentName in project: $projectName');
+
+  // Create the component file
+  final componentFile =
+      File('${projectName}/lib/components/$componentName.dart');
+  await componentFile.create(recursive: true);
+
+  // Write a basic widget structure to the file
+  await componentFile.writeAsString('''
+import 'package:flutter/material.dart';
+
+class $componentName extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('$componentName'),
+    );
+  }
+}
+''');
+
+  print('Component $componentName generated successfully!');
 }
